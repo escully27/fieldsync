@@ -33,7 +33,6 @@ const HomePage = () => {
   };
 
   return (
-    <div >
 
       <div style={{ padding: '24px' }}>
         <h1>Home Page</h1>
@@ -48,7 +47,6 @@ const HomePage = () => {
         </button>
         
         {error && <div className="alert alert-danger">{error}</div>}
-      </div>
 
       {downloadedUsers.length > 0 && (
         <div className="table-responsive">

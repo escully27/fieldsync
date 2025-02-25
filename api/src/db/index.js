@@ -1,17 +1,16 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  host: process.env.DB_HOST || 'db',
-  port: process.env.DB_PORT || 5432,
-  user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || 'postgres',
-  database: process.env.DB_NAME || 'users_db',
+  connectionString: "postgresql://postgres:pass3211@fieldsyncdb.c3ouweg2kibx.us-east-2.rds.amazonaws.com:5432/postgres",
+  ssl: {
+    rejectUnauthorized: false // Required for some PostgreSQL providers like Heroku
+  }
 });
 
-// Test the database connection
+// Test the database connection 
 pool.query('SELECT NOW()', (err, res) => {
   if (err) {
-    console.error('Database connection error:', err.stack);
+    console.error('Database connection error :', err.stack);
   } else {
     console.log('Database connected successfully');
   }

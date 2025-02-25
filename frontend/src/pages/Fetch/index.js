@@ -8,6 +8,8 @@ const FetchPage = () => {
   const [error, setError] = useState(null);
   const [fetchSuccess, setFetchSuccess] = useState(false);
 
+  const API_URL = 'http://my-express-api-env.eba-abc123.us-east-1.elasticbeanstalk.com/api';
+
   const handleFetch = async () => {
     setLoading(true);
     setError(null);
@@ -15,7 +17,7 @@ const FetchPage = () => {
     
     try {
       // Replace with your actual API endpoint
-      const response = await axios.get('http://localhost:3001/api/users');
+      const response = await axios.get('https://emmettscully.com/api/users');
       setUsers(response.data);
       setFetchSuccess(true);
       setLoading(false);
@@ -26,8 +28,8 @@ const FetchPage = () => {
   };
 
   return (
-    <div>
-      <div style={{ padding: '24px' }}>
+
+    <div style={{ padding: '24px' }}>
 
         <h1>Fetch Page</h1>
         <p>Retrieve the saved users from our database</p>
@@ -43,7 +45,6 @@ const FetchPage = () => {
         {error && <div className="alert alert-danger">{error}</div>}
         {fetchSuccess && <div className="alert alert-success">Users fetched successfully!</div>}
 
-      </div>
 
       {users.length > 0 && (
           <MapComponent locations={users} />

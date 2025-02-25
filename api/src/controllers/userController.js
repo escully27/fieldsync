@@ -3,7 +3,6 @@ const db = require('../db');
 
 const userController = {
   
-  // Save users to the database
   saveUsers: async (req, res) => {
     try {
       const { users } = req.body;
@@ -15,14 +14,9 @@ const userController = {
     }
   },
   
-  // Get all users from the database
   getUsers: async (req, res) => {
     try {
       const users = await userModel.getUsers();
-
-      // for (var u in users) {
-      //   userModel.deleteUser(users[u].id)
-      // }
 
       return res.status(200).json(users);
     } catch (err) {
@@ -35,7 +29,6 @@ const userController = {
 
     try {
       const { id } = req.params;
-      console.log(" id ", id)
       const users = await userModel.deleteUser(id);
       return res.status(200).json({ success: 'deleted ' + users + ' users' });
     } catch (err) {

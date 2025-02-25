@@ -7,19 +7,15 @@ const userRoutes = require('./routes/userRoutes');
 const app = express();
 const port = process.env.PORT || 8080;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Routes
 app.use('/api', userRoutes);
 
-// Basic route for testing
 app.get('/', (req, res) => {
-  res.send('API is running');
+  res.send('API is alive');
 });
 
-// Start server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
